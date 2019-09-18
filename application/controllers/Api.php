@@ -116,6 +116,22 @@ class Api extends CI_Controller {
 		return $this->serveApi($data);	
 	}
 
+	public function tabel5b(){
+		$this->load->database();
+		$this->db->query("SET NOCOUNT ON");
+		$data = $this->db->query("EXEC Tabel5b_IntegrasiKegiatanPenelitianPkM")->result_array();
+		$this->db->query("SET NOCOUNT OFF");
+		return $this->serveApi($data);	
+	}
+
+	public function tabel7(){
+		$this->load->database();
+		$this->db->query("SET NOCOUNT ON");
+		$data = $this->db->query("EXEC Tabel7_PKMDTPSMahasiswa")->result_array();
+		$this->db->query("SET NOCOUNT OFF");
+		return $this->serveApi($data);	
+	}
+
 	protected function serveApi($data) {
 		echo json_encode([
 			"status" => true,
