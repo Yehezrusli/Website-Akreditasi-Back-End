@@ -23,7 +23,7 @@ class Api extends CI_Controller {
 	public function tabel3a2(){
 		$this->load->database();
 		$this->db->query("SET NOCOUNT ON");
-		$data = $this->db->query("EXEC Tabel3a2_EWMPDosenTetapPerguruanTinggi")->result_array();
+		$data = $this->db->query("EXEC Tabel3a2_DosenPembimbingUtamaTugasAkhir")->result_array();
 		$this->db->query("SET NOCOUNT OFF");
 		return $this->serveApi($data);	
 	}
@@ -31,7 +31,7 @@ class Api extends CI_Controller {
 	public function tabel3a3(){
 		$this->load->database();
 		$this->db->query("SET NOCOUNT ON");
-		$data = $this->db->query("EXEC Tabel3a3_DosenTidakTetapUPPS")->result_array();
+		$data = $this->db->query("EXEC Tabel3a3_EWMPDosenTetapPerguruanTinggi")->result_array();
 		$this->db->query("SET NOCOUNT OFF");
 		return $this->serveApi($data);	
 	}
@@ -39,7 +39,7 @@ class Api extends CI_Controller {
 	public function tabel3a4(){
 		$this->load->database();
 		$this->db->query("SET NOCOUNT ON");
-		$data = $this->db->query("EXEC Tabel3a4_DosenPembimbingUtamaTugasAkhir")->result_array();
+		$data = $this->db->query("EXEC Tabel3a4_DosenTidakTetapUPPS")->result_array();
 		$this->db->query("SET NOCOUNT OFF");
 		return $this->serveApi($data);	
 	}
@@ -95,7 +95,7 @@ class Api extends CI_Controller {
 	public function tabel3b5(){
 		$this->load->database();
 		$this->db->query("SET NOCOUNT ON");
-		$data = $this->db->query("EXEC Tabel3b5_LuaranPenelitianPKMLainnya")->result_array();
+		$data = $this->db->query("EXEC Tabel3b5_KaryaIlmiahDisitasi")->result_array();
 		$this->db->query("SET NOCOUNT OFF");
 		return $this->serveApi($data);	
 	}
@@ -108,10 +108,18 @@ class Api extends CI_Controller {
 		return $this->serveApi($data);	
 	}
 
-	public function tabel6a(){
+	public function tabel3b7(){
 		$this->load->database();
 		$this->db->query("SET NOCOUNT ON");
-		$data = $this->db->query("EXEC Tabel6a_PenelitianDTPSMahasiswa")->result_array();
+		$data = $this->db->query("EXEC Tabel3b7_LuaranPenelitianPKMLainnya")->result_array();
+		$this->db->query("SET NOCOUNT OFF");
+		return $this->serveApi($data);	
+	}
+
+	public function tabel4(){
+		$this->load->database();
+		$this->db->query("SET NOCOUNT ON");
+		$data = $this->db->query("EXEC Tabel4_PenggunaanDana")->result_array();
 		$this->db->query("SET NOCOUNT OFF");
 		return $this->serveApi($data);	
 	}
@@ -120,6 +128,14 @@ class Api extends CI_Controller {
 		$this->load->database();
 		$this->db->query("SET NOCOUNT ON");
 		$data = $this->db->query("EXEC Tabel5b_IntegrasiKegiatanPenelitianPkM")->result_array();
+		$this->db->query("SET NOCOUNT OFF");
+		return $this->serveApi($data);	
+	}
+
+	public function tabel6a(){
+		$this->load->database();
+		$this->db->query("SET NOCOUNT ON");
+		$data = $this->db->query("EXEC Tabel6a_PenelitianDTPSMahasiswa")->result_array();
 		$this->db->query("SET NOCOUNT OFF");
 		return $this->serveApi($data);	
 	}
