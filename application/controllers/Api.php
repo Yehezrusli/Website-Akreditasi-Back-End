@@ -148,6 +148,30 @@ class Api extends CI_Controller {
 		return $this->serveApi($data);	
 	}
 
+	public function tabel8f1JurnalMahasiswa(){
+		$this->load->database();
+		$this->db->query("SET NOCOUNT ON");
+		$data = $this->db->query("EXEC Tabel8f1_partJurnalMahasiswa")->result_array();
+		$this->db->query("SET NOCOUNT OFF");
+		return $this->serveApi($data);	
+	}
+
+	public function tabel8f1SeminarMahasiswa(){
+		$this->load->database();
+		$this->db->query("SET NOCOUNT ON");
+		$data = $this->db->query("EXEC Tabel8f1_PartSeminarMahasiswa")->result_array();
+		$this->db->query("SET NOCOUNT OFF");
+		return $this->serveApi($data);	
+	}
+
+	public function tabel8f4(){
+		$this->load->database();
+		$this->db->query("SET NOCOUNT ON");
+		$data = $this->db->query("EXEC Tabel8f3_LuaranPenelitianPKMLainnyaMahasiswa")->result_array();
+		$this->db->query("SET NOCOUNT OFF");
+		return $this->serveApi($data);	
+	}
+
 	protected function serveApi($data) {
 		echo json_encode([
 			"status" => true,
