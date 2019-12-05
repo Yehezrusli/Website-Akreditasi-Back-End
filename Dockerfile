@@ -3,8 +3,6 @@
 # always use the *-apache tags. It have apache to serve the thing.
 FROM php:7.3-apache
 
-ENV ACCEPT_EULA=Y
-
 RUN apt-get update && apt-get install -y --fix-missing \
     apt-utils \
     gnupg
@@ -15,15 +13,8 @@ RUN curl -sS --insecure https://www.dotdeb.org/dotdeb.gpg | apt-key add -
 
 RUN apt-get update && apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
     libzip-dev \
-    libssl-dev
-
-RUN apt-get update \
-    && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
-    && curl https://packages.microsoft.com/config/debian/9/prod.list \
-        > /etc/apt/sources.list.d/mssql-release.list \
-    && apt-get -y --no-install-recommends install \
-        unixodbc-dev \
-        msodbcsql17
+    libssl-dev \
+    unixodbc-dev
 
 ARG WITH_XDEBUG=false
 
@@ -45,9 +36,7 @@ RUN docker-php-ext-install pdo pdo_mysql mysqli zip \
     && docker-php-ext-enable sqlsrv pdo_sqlsrv
 
 
-# COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
-
-ENV APACHE_DOCUMENT_ROOT /var/www/html/
+ENV APACHE_DOCUMENT_ROOT /var/www/html
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
