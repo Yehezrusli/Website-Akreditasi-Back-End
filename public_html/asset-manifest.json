@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5c2201d6.chunk.css",
+    "main.js": "/static/js/main.599c8ca7.chunk.js",
+    "main.js.map": "/static/js/main.599c8ca7.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.00905a2d.js",
+    "runtime~main.js.map": "/static/js/runtime~main.00905a2d.js.map",
+    "static/css/2.266e55a5.chunk.css": "/static/css/2.266e55a5.chunk.css",
+    "static/js/2.9353d8d9.chunk.js": "/static/js/2.9353d8d9.chunk.js",
+    "static/js/2.9353d8d9.chunk.js.map": "/static/js/2.9353d8d9.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.d13c736ab170f43744e97ebc7fcede67.js": "/precache-manifest.d13c736ab170f43744e97ebc7fcede67.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.266e55a5.chunk.css.map": "/static/css/2.266e55a5.chunk.css.map",
+    "static/css/main.5c2201d6.chunk.css.map": "/static/css/main.5c2201d6.chunk.css.map",
+    "static/media/Logo-Informatika.png": "/static/media/Logo-Informatika.7bba1772.png"
+  }
+}
