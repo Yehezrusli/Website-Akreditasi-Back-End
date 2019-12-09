@@ -11,10 +11,30 @@ RUN echo "deb http://packages.dotdeb.org jessie all" >> /etc/apt/sources.list
 RUN echo "deb-src http://packages.dotdeb.org jessie all" >> /etc/apt/sources.list
 RUN curl -sS --insecure https://www.dotdeb.org/dotdeb.gpg | apt-key add -
 
+ENV ACCEPT_EULA=Y
+
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
+    && curl https://packages.microsoft.com/config/debian/9/prod.list \
+        > /etc/apt/sources.list.d/mssql-release.list
+
+
+
+RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
+
 RUN apt-get update && apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
     libzip-dev \
     libssl-dev \
-    unixodbc-dev
+    unixodbc-dev msodbcsql17 mssql-tools unixodbc
+
+RUN apt-get update -yqq \
+    && apt-get install -y --no-install-recommends openssl \ 
+    && sed -i 's,^\(MinProtocol[ ]*=\).*,\1'TLSv1.0',g' /etc/ssl/openssl.cnf \
+    && sed -i 's,^\(CipherString[ ]*=\).*,\1'DEFAULT@SECLEVEL=1',g' /etc/ssl/openssl.cnf\
+    && rm -rf /var/lib/apt/lists/*
+
+RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile \
+    echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc\
+    source ~/.bashrc
 
 ARG WITH_XDEBUG=false
 
@@ -33,11 +53,12 @@ RUN if [ $WITH_XDEBUG = "true" ] ; then \
 # Installing required extensions for the PHP.
 RUN docker-php-ext-install pdo pdo_mysql mysqli zip \
     && pecl install sqlsrv pdo_sqlsrv \
+    #&& printf "; priority=20\nextension=sqlsrv.so\n" >> /etc/php/7.3/mods-available/sqlsrv.ini\
+    #&& printf "; priority=30\nextension=pdo_sqlsrv.so\n" >> /etc/php/7.3/mods-available/pdo_sqlsrv.ini \
     && docker-php-ext-enable sqlsrv pdo_sqlsrv
 
 
 ENV APACHE_DOCUMENT_ROOT /var/www/html
-RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 

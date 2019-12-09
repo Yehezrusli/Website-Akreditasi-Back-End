@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '10.100.70.70\\AKREDITASI2020',
+	'hostname' => '10.100.70.70\\akreditasi2020',
 	'username' => 'moertini',
 	'password' => 'moertini',
-	'database' => 'Akreditasi2020',
+	'database' => 'akreditasi2020',
 	'dbdriver' => 'sqlsrv',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
