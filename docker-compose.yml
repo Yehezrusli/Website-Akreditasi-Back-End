@@ -1,0 +1,11 @@
+version: '2'
+services:
+  web:
+    build:
+      context: .
+      args:
+        - WITH_XDEBUG=false
+    ports:
+      - "127.0.0.1:8041:80"
+    volumes:
+      - ./public_html:/var/www/html
