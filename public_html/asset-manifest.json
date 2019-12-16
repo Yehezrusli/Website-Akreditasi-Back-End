@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.66d328e2.chunk.css",
+    "main.css": "/static/css/main.9b449f33.chunk.css",
     "main.js": "/static/js/main.f1eb8f96.chunk.js",
     "main.js.map": "/static/js/main.f1eb8f96.chunk.js.map",
     "runtime~main.js": "/static/js/runtime~main.00905a2d.js",
@@ -9,10 +9,10 @@
     "static/js/2.71b03f80.chunk.js": "/static/js/2.71b03f80.chunk.js",
     "static/js/2.71b03f80.chunk.js.map": "/static/js/2.71b03f80.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.97233536a684e7d07a12a9e6d7931130.js": "/precache-manifest.97233536a684e7d07a12a9e6d7931130.js",
+    "precache-manifest.4f6f680c6e6dba44782f49821a8ece31.js": "/precache-manifest.4f6f680c6e6dba44782f49821a8ece31.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.266e55a5.chunk.css.map": "/static/css/2.266e55a5.chunk.css.map",
-    "static/css/main.66d328e2.chunk.css.map": "/static/css/main.66d328e2.chunk.css.map",
+    "static/css/main.9b449f33.chunk.css.map": "/static/css/main.9b449f33.chunk.css.map",
     "static/media/Logo-Informatika.png": "/static/media/Logo-Informatika.7bba1772.png",
     "static/media/UNPAR.png": "/static/media/UNPAR.2f7da980.png",
     "static/media/tulisan.png": "/static/media/tulisan.10252707.png"
